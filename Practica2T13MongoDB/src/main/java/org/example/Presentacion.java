@@ -6,24 +6,17 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-// Clase que maneja la presentación y la interacción con el usuario.
 public class Presentacion {
-    // Instancia de MongoDBManager para gestionar las operaciones en la base de datos.
     private MongoDBManager dbManager;
 
-    // Constructor que inicializa la instancia de MongoDBManager.
     public Presentacion(String connectionString, String databaseName) {
         dbManager = new MongoDBManager(connectionString, databaseName);
     }
 
-    // Método principal que muestra un menú interactivo y realiza operaciones en la base de datos según la elección del usuario.
     public void mostrarMenu() {
         Scanner scanner = new Scanner(System.in);
         boolean continuar = true;
-
-        // Ciclo principal que muestra el menú hasta que el usuario decida salir.
         while (continuar) {
-            // Muestra el menú de opciones.
             System.out.println("Menú:");
             System.out.println("1. Insertar documento");
             System.out.println("2. Actualizar documento");
@@ -33,11 +26,12 @@ public class Presentacion {
             System.out.println("6. Buscar documentos");
             System.out.println("7. Eliminar todos los documentos de una colección");
             System.out.println("8. Salir");
-            // Pide al usuario seleccionar una opción.
+            System.out.println("9. Búsqueda utilizando agregaciones pipeline:");
+            System.out.println("10. Exportar datos de colecciones:");
+            System.out.println("11. Importar datos de colecciones:");
             System.out.print("Seleccione una opción: ");
             int opcion = scanner.nextInt();
 
-            // Switch para manejar diferentes opciones del menú.
             switch (opcion) {
                 case 1:
                     // Insertar documento
@@ -209,6 +203,6 @@ public class Presentacion {
                     System.out.println("Opción no válida. Inténtalo de nuevo.");
             }
         }
-        scanner.close(); // Cierra el scanner al final del método.
+        scanner.close();
     }
 }
